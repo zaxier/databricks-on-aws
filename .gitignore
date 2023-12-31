@@ -1,4 +1,6 @@
+# Terraform
 *.terraform/*
 terraform.*.backup
 .terraform*
 */terraform_reference/*
+databricks_infrastructure_deployment/.DS_Store
