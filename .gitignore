@@ -1,0 +1,4 @@
+*.terraform/*
+terraform.*.backup
+.terraform*
+*/terraform_reference/*
