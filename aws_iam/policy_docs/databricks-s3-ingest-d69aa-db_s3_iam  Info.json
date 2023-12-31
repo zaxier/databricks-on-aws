@@ -1,0 +1,29 @@
+{
+    "Statement": [
+        {
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:DeleteObject",
+                "s3:ListBucket",
+                "s3:GetBucketLocation",
+                "s3:GetLifecycleConfiguration",
+                "s3:PutLifecycleConfiguration"
+            ],
+            "Resource": [
+                "arn:aws:s3:::dev20231229004150606000000001/*",
+                "arn:aws:s3:::dev20231229004150606000000001"
+            ],
+            "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "sts:AssumeRole"
+            ],
+            "Resource": [
+                "arn:aws:iam::136146594194:role/databricks-s3-ingest-d69aa-db_s3_iam"
+            ],
+            "Effect": "Allow"
+        }
+    ]
+}
