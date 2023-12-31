@@ -1,0 +1,16 @@
+services:
+  app:
+    entrypoint:
+    - sleep
+    - infinity
+    # image: docker/dev-environments-default:stable-1
+    image: dbx-on-aws:latest
+    init: true
+    volumes:
+    - type: bind
+      source: /var/run/docker.sock
+      target: /var/run/docker.sock
+    # - type: bind
+    #   source: ~/.aws
+    #   target: /root/.aws
+
