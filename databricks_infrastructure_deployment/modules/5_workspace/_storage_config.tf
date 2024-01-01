@@ -4,17 +4,17 @@ locals {
 
 resource "aws_s3_bucket" "root_storage_bucket" {
   bucket_prefix = local.bucket_prefix
-  # acl           = "private"
+  acl           = "private"
   force_destroy = true
   tags = merge(var.tags, {
     Name = "${var.workspace_name}-rootbucket"
   })
 }
 
-resource "aws_s3_bucket_acl" "acl" {
-  bucket = aws_s3_bucket.root_storage_bucket.id
-  acl    = "private"
-}
+# resource "aws_s3_bucket_acl" "acl" {
+#   bucket = aws_s3_bucket.root_storage_bucket.id
+#   acl    = "private"
+# }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "root_storage_bucket" {
   bucket = aws_s3_bucket.root_storage_bucket.bucket

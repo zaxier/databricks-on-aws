@@ -143,22 +143,3 @@ resource "databricks_catalog" "this" {
   depends_on = [databricks_external_location.this]
 }
 
-resource "databricks_grants" "catalog" {
-  catalog = databricks_catalog.this.name
-
-  grant {
-    principal  = var.account_admin_group_name
-    privileges = ["ALL_PRIVILEGES"]
-  }
-
-  grant {
-    principal  = var.workspace_admin_group_name
-    privileges = ["ALL_PRIVILEGES"]
-  }
-
-  grant {
-    principal  = var.workspace_user_group_name
-    privileges = ["USE_CATALOG", "CREATE_FUNCTION", "CREATE_TABLE", "CREATE_VOLUME", "EXECUTE", "MODIFY", "REFRESH", "SELECT", "READ_VOLUME", "WRITE_VOLUME", "USE_SCHEMA"]
-  }
-  depends_on = [databricks_catalog.this]
-}

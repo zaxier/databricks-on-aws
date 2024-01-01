@@ -3,7 +3,9 @@ resource "databricks_user" "unity_users" {
   for_each  = toset(concat(var.workspace_users, var.workspace_admins, var.account_admins))
   user_name = each.key
   force     = true
+  disable_as_user_deletion = true
 }
+
 
 resource "databricks_group" "account_admin_group" {
   display_name = var.account_admin_group_name

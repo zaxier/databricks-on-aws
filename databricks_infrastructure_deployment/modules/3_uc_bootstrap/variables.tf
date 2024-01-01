@@ -42,3 +42,8 @@ variable "workspace_admin_group_name" {
   description = "Name of the workspace admin group"
   type        = string
 }
+
+variable "databricks_account_owner_email" {
+  description = "Email of the Databricks account owner"
+  type        = string
+}

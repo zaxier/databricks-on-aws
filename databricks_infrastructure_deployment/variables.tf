@@ -65,3 +65,8 @@ variable "account_admins" {
   description = "List of account admins"
   type        = list(string)
 }
+
+variable "databricks_account_owner_email" {
+  description = "Email address of the account owner"
+  type        = string
+}

@@ -58,6 +58,7 @@ module "uc_bootstrap" {
   account_admin_group_name   = var.account_admin_group_name
   workspace_user_group_name  = var.workspace_user_group_name
   workspace_admin_group_name = var.workspace_admin_group_name
+  databricks_account_owner_email = var.databricks_account_owner_email
   depends_on                 = [module.aws_crossaccount_role]
 }
 
@@ -148,3 +149,38 @@ module "test_catalog" {
   purpose                    = "test"
   depends_on                 = [module.dev_workspace, module.uc_metastore, module.uc_privileges]
 }
+
+module "dev_catalog_grants" {
+  source = "./modules/9_catalog_grants"
+  providers = {
+    databricks = databricks.dev_ws
+  }
+  catalog_name               = module.dev_catalog.catalog_name
+  account_admin_group_name   = var.account_admin_group_name
+  workspace_admin_group_name = var.workspace_admin_group_name
+  workspace_user_group_name  = var.workspace_user_group_name
+  workspace_admin_grants     = ["ALL_PRIVILEGES"]
+  workspace_user_grants      = ["USE_CATALOG", "CREATE_FUNCTION", "CREATE_TABLE", "CREATE_VOLUME", "EXECUTE", "MODIFY", "REFRESH", "SELECT", "READ_VOLUME", "WRITE_VOLUME", "USE_SCHEMA"]
+  account_admin_grants       = ["ALL_PRIVILEGES"]
+  depends_on                 = [module.dev_catalog]
+}
+
+# resource "databricks_grants" "catalog" {
+#   catalog = databricks_catalog.this.name
+
+#   grant {
+#     principal  = var.account_admin_group_name
+#     privileges = ["ALL_PRIVILEGES"]
+#   }
+
+#   grant {
+#     principal  = var.workspace_admin_group_name
+#     privileges = ["ALL_PRIVILEGES"]
+#   }
+
+#   grant {
+#     principal  = var.workspace_user_group_name
+#     privileges = ["USE_CATALOG", "CREATE_FUNCTION", "CREATE_TABLE", "CREATE_VOLUME", "EXECUTE", "MODIFY", "REFRESH", "SELECT", "READ_VOLUME", "WRITE_VOLUME", "USE_SCHEMA"]
+#   }
+#   depends_on = [databricks_catalog.this]
+# }
