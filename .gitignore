@@ -4,3 +4,6 @@ terraform.*.backup
 .terraform*
 */terraform_reference/*
 *.DS_Store
+
+.databricks
+*.tfvars
