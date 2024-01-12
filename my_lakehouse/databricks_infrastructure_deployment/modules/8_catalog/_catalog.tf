@@ -120,7 +120,7 @@ resource "databricks_storage_credential" "this" {
     role_arn = local.aws_iam_role_arn
   }
   comment    = "Managed by Terraform"
-  depends_on = [aws_iam_role_policy_attachment.attachment]
+  depends_on = [time_sleep.wait]
 }
 
 resource "databricks_external_location" "this" {
@@ -140,7 +140,7 @@ resource "databricks_catalog" "this" {
   properties = {
     purpose = var.purpose
   }
-  depends_on = [databricks_external_location.this]
+  depends_on    = [databricks_external_location.this]
   force_destroy = true
 }
 
