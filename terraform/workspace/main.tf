@@ -7,28 +7,6 @@ locals {
   aws_name_prefix = "${var.project_name}-aws-${var.aws_env}"
 }
 
-# module "aws_resources" {
-#   source            = "./modules/aws"
-#   prefix            = local.aws_name_prefix
-#   tags              = local.tags
-#   vpc_config        = var.vpc_config
-#   databricks_config = var.databricks_config
-# }
-
-# module "dbx_resources" {
-#   source = "./modules/dbx"
-#   providers = {
-#     databricks = databricks.mws_accowner
-#   }
-#   prefix                    = local.aws_name_prefix
-#   tags                      = local.tags
-#   databricks_config         = var.databricks_config
-#   vpc_id                    = module.aws_resources.vpc_id
-#   crossaccount_role_arn     = module.aws_resources.cross_account_role_arn
-#   databricks_account_admins = ["xtarmitage@gmail.com"]
-#   databricks_users          = ["abc@gmail.com"]
-#   account_admin_group_name         = "admin-grp"
-# }
 
 module "aws_vpc" {
   source                = "./modules/1_aws_vpc"
