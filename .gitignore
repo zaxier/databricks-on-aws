@@ -9,4 +9,4 @@ terraform.*.backup
 *.tfvars
 .vscode
 *sensitive*
-my_lakehouse/databricks_infrastructure_deployment/tmp.json
+persist_terraform_state.sh
