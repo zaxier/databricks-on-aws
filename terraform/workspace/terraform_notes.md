@@ -1,6 +1,3 @@
-
-
-
 List tf state
 `terraform state list`
 
