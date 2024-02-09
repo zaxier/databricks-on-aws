@@ -10,3 +10,4 @@ terraform.*.backup
 .vscode
 *sensitive*
 persist_terraform_state.sh
+terraform/aws_iam_infra/*
