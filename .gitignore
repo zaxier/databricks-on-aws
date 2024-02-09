@@ -11,3 +11,5 @@ terraform.*.backup
 *sensitive*
 persist_terraform_state.sh
 terraform/aws_iam_infra/*
+personal_archive/*
+personal_notebooks/*
