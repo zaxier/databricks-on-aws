@@ -1,0 +1,22 @@
+{
+  "dev_ws_id": {
+    "sensitive": false,
+    "type": "number",
+    "value": 3255779853958516
+  },
+  "dev_ws_token": {
+    "sensitive": true,
+    "type": "string",
+    "value": "dapi72be3302c17b4da00bdd7f8a215e9d83"
+  },
+  "dev_ws_url": {
+    "sensitive": false,
+    "type": "string",
+    "value": "https://dbc-de91c0d2-d3ba.cloud.databricks.com"
+  },
+  "sp_secret": {
+    "sensitive": true,
+    "type": "string",
+    "value": "dose4150bceb6bade6457557624d4f66dce3"
+  }
+}
